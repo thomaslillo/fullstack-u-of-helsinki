@@ -6,6 +6,7 @@ const App = () => {
   const a = 10
   const b = 20
   const username = 'Tom' 
+  const timeL = new Date().getTime()
 
   // you can embed components in other components
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Header />
       <Hello username={username} />
       <Time now={now} />
+      <Countdown timeLeft={timeL} />
       <Addition a={a} b={b} />
     </div>
   )
@@ -39,6 +41,22 @@ function Addition(props) {
   return (
     <div>
       <p>{props.a} plus {props.b} is {props.a + props.b}</p>
+    </div>
+  )
+}
+
+// react component that counts down on a timer
+function Countdown(props) {
+  const [timeLeft, setTimeLeft] = useState(props.timeLeft)
+  return (
+    <div>
+      <p>Time left: {timeLeft}</p>
+      <button onClick={() => setTimeLeft(timeLeft - 1)}>
+        -
+      </button>
+      <button onClick={() => setTimeLeft(timeLeft + 1)}>
+        +
+      </button>
     </div>
   )
 }
