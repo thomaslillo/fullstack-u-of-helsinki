@@ -4,6 +4,7 @@
 
 #### Content
 
+- JavaScript
 - React
 - Redux
 - Node.js
