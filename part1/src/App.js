@@ -1,22 +1,34 @@
 import { useState } from 'react'
 
 const App = () => {
+
+    // the state of the app
+    const [count, setCount] = useState(count)
+
     return (
-        <div>
-            <Counter />
+        <div>            
+            <Display count={count} />   
+            <AddValue setCount={setCount} />         
         </div>
     )
 }
 
-
-const Counter = () => {
-    const [count, setCount] = useState(0)
-    
-    // with the timeout 1000, call the setCOunt function after 1 second
-    setTimeout(() => setCount(count + 1), 1000)
-
+// the display component
+const Display = (props) => {
     return (
-        <div><p>{count}</p></div>
+        <div>
+            <p>{props.count}</p>
+        </div>
+    )
+}
+
+const AddValue = (props) => {
+    return (
+        <div>
+            <button onClick={() => props.setCount(props.count + 1)}>
+                ADD ONE
+            </button>
+        </div>
     )
 }
 
